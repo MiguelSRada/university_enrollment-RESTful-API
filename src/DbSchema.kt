@@ -24,9 +24,9 @@ object Programs: Table("programs"){
 object Courses: Table("courses"){
     val id = long("id").primaryKey().autoIncrement()
     val name = varchar("name",255)
-    val credits = integer("credits")
-    val capacity = integer("capacity")
-    val enrolled = integer("enrolled")
+    val credits = long("credits")
+    val capacity = long("capacity")
+    val enrolled = long("enrolled")
 }
 
 object Enrollments: Table("enrollments"){
@@ -36,7 +36,7 @@ object Enrollments: Table("enrollments"){
 }
 
 object ProgramsAndCourses: Table(){
-    val id = long("programAndCourse").primaryKey()
+    val id = long("programAndCourse").primaryKey().autoIncrement()
     val program_id = long("program_id").references(Programs.id)
     val course_id = long("course_id").references(Courses.id)
 }
